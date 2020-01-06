@@ -1,14 +1,16 @@
-const express = require('express');
+// import firebase
+const firebase = require('./../../config/firebaseConfig');
 
 // import models
-//var Home = require('../models/bookinstance');
+const account = require('./../models/account.M');
 
 exports.index = function (req, res) {
+    const user = firebase.auth().currentUser;
     res.render("pages/home", {
         layout: 'index',
         // some variables
-        card: [
-            {
+        user: user,
+        card: [{
                 name: 'Võ luyện đỉnh phong'
             },
             {
@@ -28,6 +30,32 @@ exports.index = function (req, res) {
             }
         ]
 
+    })
+};
+
+exports.sign_in = function (req, res) {
+    const user = firebase.auth().currentUser;
+    if (user) {
+        res.redirect("/");
+        return;
+    }
+    res.render("pages/sign_in", {
+        layout: 'index'
+        // some variables
+    })
+};
+
+exports.sign_up = function (req, res) {
+    const user = firebase.auth().currentUser;
+    
+    if (user) {
+        res.redirect("/");
+        return;
+    }
+    res.render("pages/sign_up", {
+        layout: 'index',
+        error: false
+        // some variables
     })
 };
 

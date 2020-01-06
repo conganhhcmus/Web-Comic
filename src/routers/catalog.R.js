@@ -9,17 +9,26 @@ const user_controller = require('./../controllers/user.C');
 
 // GET home page.
 router.get('/', home_controller.index);
-
 // GET fag page
 router.get('/faq', home_controller.faq);
-
 // GET fag page
 router.get('/about', home_controller.about);
+// GET sign_in page.
+router.get('/sign_in', home_controller.sign_in);
+// GET sign_up
+router.get('/sign_up', home_controller.sign_up);
 
 /// ACCOUNT ROUTES ///
 
-// GET login page.
-router.get('/login', user_controller.login);
-
+// GET sign_out
+router.get('/sign_out', user_controller.sign_out);
+// POST sign_up
+router.post('/sign_up', user_controller.sign_up);
+// POST sign_in
+router.post('/sign_in', user_controller.sign_in);
+// POST sign_in_fb
+router.post('/sign_in_fb', user_controller.sign_in_fb);
+// POST sign_in_gg
+router.post('/sign_in_gg',user_controller.sign_in_gg);
 
 module.exports = router;

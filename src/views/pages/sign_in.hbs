@@ -1,0 +1,86 @@
+﻿<!--[if lte IE 9]>
+	<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+<![endif]-->
+
+<!-- Main wrapper -->
+<div class="wrapper" id="wrapper">
+	<!-- Start Bradcaump area -->
+	<div class="ht__bradcaump__area bg-image--6">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="bradcaump__inner text-center">
+						<h2 class="bradcaump-title">My Account</h2>
+						<nav class="bradcaump-content">
+							<a class="breadcrumb_item" href="index.html">Home</a>
+							<span class="brd-separetor">/</span>
+							<span class="breadcrumb_item active">My Account</span>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End Bradcaump area -->
+	<!-- Start My Account Area -->
+	<section class="my_account_area pt--80 pb--55 bg--white">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 col-12"></div>
+				<div class="col-lg-6 col-12">
+					<div class="my__account__wrapper">
+						<h3 class="account__title" style="text-align: center">Sign in</h3>
+						{{!-- Basic Login --}}
+
+						<div class="account__form">
+							<form action="/sign_in" method="POST" onsubmit="">
+								<div class="input__box">
+									<label>Username or email address <span>*</span></label>
+									<input type="text" name="user">
+								</div>
+								<div class="input__box">
+									<label>Password<span>*</span></label>
+									<input type="password" name="pass">
+								</div>
+								<div class="form__btn">
+									<button type="submit">Sign in</button>
+									<label class="label-for-checkbox">
+										<input id="rememberme" class="input-checkbox" name="rememberme" value="forever"
+											type="checkbox">
+										<span>Remember me</span>
+									</label>
+									<a class="forget_pass" href="#">Lost your password?</a>
+									<a class="forget_pass" href="/sign_up">Create new account</a>
+								</div>
+							</form>
+							{{#if error}}<div class="alert alert-danger" id="error" align="center">{{error}}</div>{{/if}}
+							<br>
+							<p style="text-align: center;">OR</p>
+							<br>
+							<div style="text-align:center">
+
+								<form action="/sign_in_fb" method="POST" onsubmit="">
+									<button style="border: 2px solid #333;" class="btn facebook-btn social-btn"
+										type="submit"><span><i class="fab fa-facebook-f"></i> Sign in with
+											Facebook</span>
+									</button>
+								</form>
+
+								<form action="/sign_in_gg" method="POST" onsubmit="">
+									<button style="border: 2px solid #333" class="btn google-btn social-btn"
+										type="submit"><span><i class="fab fa-google-plus-g"></i> Sign in with
+											Google+</span>
+									</button>
+								</form>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+				<div class="col-lg-3 col-12"></div>
+			</div>
+		</div>
+	</section>
+	<!-- End My Account Area -->
+</div>
