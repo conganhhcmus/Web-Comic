@@ -41,7 +41,7 @@ require('./../src/middleware/errors')(app);
 
 
 // show info server
-const server = app.listen(3000, function () {
+const server = app.listen(443, function () {
     const host = server.address().address
     const port = server.address().port
     console.log("SERVER: http://%s:%s", host, port)
