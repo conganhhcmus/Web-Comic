@@ -1,32 +1,15 @@
 const express = require('express');
+const firebaseM = require("../models/comic.M");
 
 // import models
 //var Home = require('../models/bookinstance');
 
-exports.index = function (req, res) {
+exports.index = async function (req, res) {
+    let comic = await firebaseM.get10NewComic();
     res.render("pages/home", {
         layout: 'index',
         // some variables
-        card: [
-            {
-                name: 'Võ luyện đỉnh phong'
-            },
-            {
-                name: 'Toàn chức cao thủ'
-            },
-            {
-                name: 'Siêu năng lập phương'
-            },
-            {
-                name: 'Tôi thăng cấp một mình'
-            },
-            {
-                name: 'Thả vu nữ đó ra'
-            },
-            {
-                name: 'Từ hôm nay ta làm thành chủ'
-            }
-        ]
+        newComicL: comic,
 
     })
 };

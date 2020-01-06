@@ -20,11 +20,15 @@ app.set('views', __dirname + '/../src/views');
 
 // import Routers
 const indexRouter = require(__dirname + "/../src/routers/index.R");
+const readRouter = require(__dirname + "/../src/routers/read.R");
 const catalogRouter = require(__dirname + "/../src/routers/catalog.R"); //Import routes for "catalog" area of site
 
 // use Routers
-app.use('/', indexRouter);
-app.use('/home', catalogRouter); // Add catalog routes to middleware chain.
+app.use('/',indexRouter)
+app.use('/home', catalogRouter);
+// app.use('/home', catalogRouter); // Add catalog routes to middleware chain.
+// app.use('/login',catalogRouter);
+app.use('/comic_detail',readRouter);
 
 // middleware
 require('./../src/middleware/errors')(app);
