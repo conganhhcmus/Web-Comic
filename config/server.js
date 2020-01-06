@@ -3,7 +3,7 @@ const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const session = require('express-session');
-
+const PORT = process.env.PORT || 443;
 const {
     join
 } = require('path');
@@ -41,7 +41,7 @@ require('./../src/middleware/errors')(app);
 
 
 // show info server
-const server = app.listen(443, function () {
+const server = app.listen(PORT, function () {
     const host = server.address().address
     const port = server.address().port
     console.log("SERVER: http://%s:%s", host, port)
