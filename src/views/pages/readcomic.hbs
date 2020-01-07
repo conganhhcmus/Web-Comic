@@ -1,0 +1,37 @@
+<div></div>
+
+{{#each data.image}}
+<div>
+    <img src={{this}} style="width: 60%;"><br>
+</div>
+{{/each}}
+
+<form action="/comic_detail/{{idComic}}/read" method="GET" id="formselect">
+{{!-- <input hidden name="select" value="{{curentChap-1}}" type="number"> --}}
+<div id="chap">
+    <ul class="pagination modal-4">
+        <li><a href="javascript:submitPrevForm();"  class="prev">
+                <i class="fa fa-chevron-left"></i>
+                Previous
+            </a>
+        </li>
+        <li>
+
+            <a class="select">
+                <select class="select" onchange="$('form').submit();" name="select" id="select">
+                    {{!-- <option selected>chap {{currentChap}}</option> --}}
+                    <hr>
+                    {{#each chap}}
+                    {{#if this.isSelect }}
+                    <option value="{{this.value}}" selected> chap {{this.value}} </option>
+                    {{else}} <option value="{{this.value}}"> chap {{this.value}} </option>
+                    {{/if}}
+                    {{/each}}
+                </select>
+            </a>
+
+        </li>
+        <li><a href="javascript:submitNextForm();" class="next"> Next <i class="fa fa-chevron-right"></i></a></li>
+    </ul>
+</div>
+</form>
