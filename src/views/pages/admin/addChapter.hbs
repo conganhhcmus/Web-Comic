@@ -1,30 +1,15 @@
 <div class="wrapper" id="wrapper">
-    <!-- Start Search Popup -->
-    <div class="box-search-content search_active block-bg close__top">
-        <form id="search_mini_form" class="minisearch" action="#">
-            <div class="field__search">
-                <input type="text" placeholder="Search entire store here...">
-                <div class="action">
-                    <a href="#"><i class="zmdi zmdi-search"></i></a>
-                </div>
-            </div>
-        </form>
-        <div class="close__wrap">
-            <span>close</span>
-        </div>
-    </div>
-    <!-- End Search Popup -->
     <!-- Start Bradcaump area -->
     <div class="ht__bradcaump__area bg-image--3">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="bradcaump__inner text-center">
-                        <h2 class="bradcaump-title">Shopping Cart</h2>
+                        <h2 class="bradcaump-title">Update Comic</h2>
                         <nav class="bradcaump-content">
-                            <a class="breadcrumb_item" href="index.html">Home</a>
+                            <a class="breadcrumb_item" href="/">Admin</a>
                             <span class="brd-separetor">/</span>
-                            <span class="breadcrumb_item active">Shopping Cart</span>
+                            <span class="breadcrumb_item active">add chapter</span>
                         </nav>
                     </div>
                 </div>
@@ -32,52 +17,87 @@
         </div>
     </div>
     <!-- End Bradcaump area -->
-    <!-- cart-main-area start -->
-    <div class="cart-main-area section-padding--lg bg--white">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 col-sm-12 ol-lg-12">
-                    <div class="table-content wnro__table table-responsive">
-                        <table>
-                            <thead>
-                                <tr class="title-top">
-                                    <th class="product-thumbnail">Poster</th>
-                                    <th class="product-name">Comic name</th>
-                                    <th class="product-price">total chapter</th>
-                                    <th class="product-quantity">add new chappter </th>
-                                    <th class="product-remove">Remove</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="product-thumbnail"><img src="/images/product/sm-3/1.jpg"
-                                            alt="product img"></td>
-                                    <td class="product-name"><a href="">Natoque penatibus</a></td>
-                                    <td class="product-price"><span class="amount">$165.00</span></td>
-                                    <td class="product-quantity">
-                                        <form action="#">
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text"
-                                                        id="inputGroupFileAddon01">Upload</span>
-                                                </div>
-                                                <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="inputGroupFile01"
-                                                        aria-describedby="inputGroupFileAddon01">
-                                                    <label class="custom-file-label" for="inputGroupFile01">Choose
-                                                        file</label>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </td>
-                                    <td class="product-remove"><a href="#">X</a></td>
-                                </tr>
-                            </tbody>
-                        </table>
+    <!-- Modal -->
+    <div class="modal-dialog modal__container" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="modal-product">
+                    <!-- Start product /images -->
+                    <div class="product-/images">
+                        <div class="main-image /images">
+                            <img alt="big /images" src="/images/product/big-img/1.jpg">
+                        </div>
+                    </div>
+                    <!-- end product /images -->
+                    <div class="product-info">
+                        <h1>Comic Name <a href=""> &#128393;</a> </h1>
+                        <div class="rating__and__review">
+                            <ul class="rating">
+                                <li><span class="ti-star"></span></li>
+                                <li><span class="ti-star"></span></li>
+                                <li><span class="ti-star"></span></li>
+                                <li><span class="ti-star"></span></li>
+                                <li><span class="ti-star"></span></li>
+                            </ul>
+                            <div class="review">
+                                <a>12 chapter</a>
+                            </div>
+                        </div>
+                        <div class="price-box-3">
+                            <div class="s-price-box">
+                                <span class="new-price">17.201 views</span>
+                            </div>
+                        </div>
+                        <div class="quick-desc">
+                            mô tả gồm 2 đến 3 câu
+                        </div>
+                        <div class="select__color">
+                            <h2>Author ----</h2>
+                        </div>
+                        <div class="select__size">
+                            <h2>Time upload 01/01/2020 </h2>
+                        </div>
+                        <div class="social-sharing">
+                            <div class="widget widget_socialsharing_widget">
+                                <h3 class="widget-title-modal">Share this comic</h3>
+                                <ul class="social__net social__net--2 d-flex justify-content-start">
+                                    <li class="facebook"><a href="#" class="rss social-icon"><i
+                                                class="zmdi zmdi-rss"></i></a></li>
+                                    <li class="linkedin"><a href="#" class="linkedin social-icon"><i
+                                                class="zmdi zmdi-linkedin"></i></a></li>
+                                    <li class="pinterest"><a href="#" class="pinterest social-icon"><i
+                                                class="zmdi zmdi-pinterest"></i></a></li>
+                                    <li class="tumblr"><a href="#" class="tumblr social-icon"><i
+                                                class="zmdi zmdi-tumblr"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="quick-desc">
+                            <form action="">
+                                <div class="input_box">
+                                    <input type="file" name="addChapter">
+
+                                    {{!-- <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="customFile"
+                                            name="chapterNewImg">
+                                        <label class="custom-file-label" for="customFile"> Choose file</label>
+                                    </div> --}}
+                                </div>
+                                <div class="product__info__main">
+                                    <input id="chapIndex" class="input-text" name="chapIndex" min="1" value="1" title="ChapIndex"
+											type="number">
+                                    <div class="box-tocart d-flex">
+                                        <div class="addtocart__actions">
+                                            <button class="tocart" type="submit" title="Add to Cart">︵Add new chapter︵</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- cart-main-area end -->
 </div>

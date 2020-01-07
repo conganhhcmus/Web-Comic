@@ -12,7 +12,7 @@ const storage = new Storage({
 
 const bucket = storage.bucket("comic-web-bc8e5.appspot.com");
 
-exports.newComic1 = async function (req, res) {
+exports.newComicP = async function (req, res) {
     const myFormReq = req.body
     file = req.files[0]
     let Mycomic = {
@@ -24,6 +24,7 @@ exports.newComic1 = async function (req, res) {
         numberDownloaded: 0,
         numberView: 0,
         totalChap: 0,
+        time: parseInt(Date.now()),
     }
     let newFileName = `${Date.now()/16253}${Date.now()}.jpg`;
 
@@ -51,13 +52,45 @@ exports.newComic1 = async function (req, res) {
 }
 
 exports.newComic = async function (req, res) {
-    //const id = req.query.id
+    const user = req.user;
     res.render("pages/admin/newComic", {
         layout: 'index',
+        user: user,
     })
 }
-exports.addChapter = async function (req, res) {
-    res.render("pages/admin/addChapter.hbs", {
+
+exports.listChapter = async function(req,res){
+    const user = req.user;
+    res.render("pages/admin/ListComic",{
         layout: 'index',
+        user: user,
+    })
+}
+exports.addChapter = async function(req,res){
+    const user = req.user;
+    res.render("pages/admin/addChapter",{
+        layout: 'index',
+        user: user,
+    })
+}
+exports.addChapterP = async function(req,res){
+    const user = req.user;
+    res.render("pages/admin/addChapter",{
+        layout: 'index',
+        user: user,
+    })
+}
+exports.editChapter = async function(req,res){
+    const user = req.user;
+    res.render("pages/admin/editComic",{
+        layout: 'index',
+        user: user,
+    })
+}
+exports.editChapterP = async function(req,res){
+    const user = req.user;
+    res.render("pages/admin/editComic",{
+        layout: 'index',
+        user: user,
     })
 }

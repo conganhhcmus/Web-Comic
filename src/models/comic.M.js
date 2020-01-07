@@ -51,8 +51,5 @@ module.exports = {
             db.collection('Comic').doc(ref.id).update({id : ref.id})
             console.log('Added document with ID: ', ref.id);
         });
-        task.finally( () =>{
-            console.log(2)
-        })
     }
 }

@@ -7,3 +7,29 @@
 
 **********************************************************************************/
 
+
+.filedrag.hover .drag-label {
+    color: #F00;
+}
+
+.custom-file-input-wrapper {
+    position: relative;
+}
+
+.custom-file-input-wrapper .custom-file-input-button {
+    position: relative;
+    overflow: hidden;
+}
+
+.custom-file-input-wrapper .custom-file-input-button * {
+    cursor: pointer;
+}
+
+.custom-file-input-wrapper .custom-file-input-button input[type="file"] {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    cursor: pointer;
+    opacity: 0;
+}

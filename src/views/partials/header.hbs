@@ -124,6 +124,11 @@
                                                 <span><a href="#">My Account</a></span>
                                                 <span><a href="#">My Wishlist</a></span>
                                                 {{#if user}}
+                                                <!-- Check admin đoạn này nhé . đổi lại điều kieenjn là đc-->
+                                                    {{#if user}}
+                                                    <span><a href="/admin">Manage</a></span>
+                                                    <span><a href="/admin/new_comic">New comic</a></span>
+                                                    {{/if}}
                                                 <span><a href="/home/sign_out">Sign out</a></span>
                                                 {{else}}
                                                 <span><a href="/home/sign_in">Sign in</a></span>
