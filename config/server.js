@@ -3,7 +3,11 @@ const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const session = require('express-session');
-const PORT = process.env.PORT || 443;
+const PORT = process.env.PORT || 3000;
+// const LocalStrategy = require('passport-local').Strategy;
+// const firebaseConfig = require('./firebaseConfig');
+// const firebaseAdmin = require('./firebaseAdmin');
+
 const {
     join
 } = require('path');
@@ -20,15 +24,23 @@ app.use(express.static(__dirname + "/../src/public"));
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 app.set('views', __dirname + '/../src/views');
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(passport.initialize());
-app.use(session({
-    secret: 'something',
-    cookie: {
-        maxAge: 1000 * 50 * 5 //đơn vị là milisecond
-    }
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: false
 }));
+
+app.use(session({
+    secret: process.env.SESSION_SECRET || 'secret',
+    saveUninitialized: true,
+    resave: true
+}))
+
+app.use(passport.initialize());
 app.use(passport.session());
+
+// //set up passport
+require('./../config/passport') (passport);
 
 // import Routers
 const catalogRouter = require(__dirname + "/../src/routers/catalog.R"); //Import routes for "catalog" area of site

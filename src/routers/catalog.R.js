@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const passport = require('passport');
 
 // Require controller modules.
 const home_controller = require('./../controllers/home.C');
@@ -29,6 +30,6 @@ router.post('/sign_in', user_controller.sign_in);
 // POST sign_in_fb
 router.post('/sign_in_fb', user_controller.sign_in_fb);
 // POST sign_in_gg
-router.post('/sign_in_gg',user_controller.sign_in_gg);
+router.post('/sign_in_gg', user_controller.sign_in_gg);
 
 module.exports = router;

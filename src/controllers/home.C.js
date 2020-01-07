@@ -5,7 +5,7 @@ const firebase = require('./../../config/firebaseConfig');
 const account = require('./../models/account.M');
 
 exports.index = function (req, res) {
-    const user = firebase.auth().currentUser;
+    const user = req.user;
     res.render("pages/home", {
         layout: 'index',
         // some variables
@@ -34,7 +34,7 @@ exports.index = function (req, res) {
 };
 
 exports.sign_in = function (req, res) {
-    const user = firebase.auth().currentUser;
+    const user = req.user;
     if (user) {
         res.redirect("/");
         return;
@@ -46,8 +46,8 @@ exports.sign_in = function (req, res) {
 };
 
 exports.sign_up = function (req, res) {
-    const user = firebase.auth().currentUser;
-    
+    const user = req.user;
+
     if (user) {
         res.redirect("/");
         return;

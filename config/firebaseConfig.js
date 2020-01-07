@@ -12,6 +12,6 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-module.exports = firebase;
-
 console.log("DATA: connected to firebase !");
+
+module.exports = firebase;

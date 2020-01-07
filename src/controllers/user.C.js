@@ -1,25 +1,25 @@
 // import firebase
 const firebase = require('./../../config/firebaseConfig');
-
+const passport = require('passport');
 // import models
 //const accountM = require('./../models/account.M');
 
 exports.sign_out = function (req, res) {
     //to do something
-
     firebase.auth().signOut()
         .catch(function (error) {
             return error;
         });
 
+    req.logout();
     res.redirect('/');
 };
 
-exports.sign_up = function (req, res) {
+exports.sign_up = function (req, res, next) {
     //to do something
     const user = {
-        email: req.body.user,
-        password: req.body.pass,
+        email: req.body.username,
+        password: req.body.password,
         confirm: req.body.confirm,
         displayName: req.body.name
     }
@@ -62,25 +62,40 @@ exports.sign_up = function (req, res) {
     }
     // create account
     firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
-        .then(function (firebaseUser){
-            res.redirect('/');
-            return;
+        .then(function () {
+            passport.authenticate('local', function (err, user, info) {
+                if (err) {
+                    return next(err);
+                }
+                if (!user) {
+                    return res.render('pages/sign_up', {
+                        layout: 'index',
+                        error: 'Create new account error ! Pls create again !',
+                    });
+                }
+                req.logIn(user, function (err) {
+                    if (err) {
+                        return next(err);
+                    }
+                    return res.redirect('/');
+                });
+            })(req, res, next);
         })
-        .catch(function (error) {
-            res.render("pages/sign_up", {
+        .catch(function () {
+            return res.render("pages/sign_up", {
                 layout: 'index',
                 error: "Create new account error ! Pls create again !"
                 // some variables
             })
-            return;
+            
         });
 };
 
-exports.sign_in = function (req, res) {
+exports.sign_in = function (req, res, next) {
     //to do something
     const user = {
-        email: req.body.user,
-        password: req.body.pass
+        email: req.body.username,
+        password: req.body.password
     }
 
     // email null
@@ -110,22 +125,26 @@ exports.sign_in = function (req, res) {
         })
         return;
     }
-    //sign in
-    firebase.auth().signInWithEmailAndPassword(user.email, user.password)
-        .then(function (firebaseUser) {
-            // success
-            res.redirect('/');
-            return;
-        })
-        .catch(function (error) {
-            // error
-            res.render("pages/sign_in", {
+
+    console.log("input", req.body.username, req.body.password);
+    //sign in with passport
+    passport.authenticate('local', function (err, user, info) {
+        if (err) {
+            return next(err);
+        }
+        if (!user) {
+            return res.render('pages/sign_in', {
                 layout: 'index',
-                error: "Email or Password is incorrect !"
-                // some variables
-            })
-            return error;
+                error: 'Email or Password is incorrect !',
+            });
+        }
+        req.logIn(user, function (err) {
+            if (err) {
+                return next(err);
+            }
+            return res.redirect('/');
         });
+    })(req, res, next);
 };
 
 exports.sign_in_fb = function (req, res) {
