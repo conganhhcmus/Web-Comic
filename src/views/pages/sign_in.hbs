@@ -33,7 +33,7 @@
 						{{!-- Basic Login --}}
 
 						<div class="account__form">
-							<form action="/sign_in" method="POST" onsubmit="">
+							<form action="/home/sign_in" method="POST" onsubmit="">
 								<div class="input__box">
 									<label>Username or email address <span>*</span></label>
 									<input type="text" name="username">
@@ -50,7 +50,7 @@
 										<span>Remember me</span>
 									</label>
 									<a class="forget_pass" href="#">Lost your password?</a>
-									<a class="forget_pass" href="/sign_up">Create new account</a>
+									<a class="forget_pass" href="/home/sign_up">Create new account</a>
 								</div>
 							</form>
 							{{#if error}}<div class="alert alert-danger" id="error" align="center">{{error}}</div>{{/if}}
@@ -59,14 +59,14 @@
 							<br>
 							<div style="text-align:center">
 
-								<form action="/sign_in_fb" method="POST" onsubmit="">
+								<form action="/home/sign_in_fb" method="POST" onsubmit="">
 									<button style="border: 2px solid #333;" class="btn facebook-btn social-btn"
 										type="submit"><span><i class="fab fa-facebook-f"></i> Sign in with
 											Facebook</span>
 									</button>
 								</form>
 
-								<form action="/sign_in_gg" method="POST" onsubmit="">
+								<form action="/home/sign_in_gg" method="POST" onsubmit="">
 									<button style="border: 2px solid #333" class="btn google-btn social-btn"
 										type="submit"><span><i class="fab fa-google-plus-g"></i> Sign in with
 											Google+</span>

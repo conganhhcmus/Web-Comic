@@ -5,10 +5,15 @@ const passport = require('passport');
 // Require controller modules.
 const home_controller = require('./../controllers/home.C');
 const user_controller = require('./../controllers/user.C');
+const comic_controller = require('./../controllers/comic.C');
+
 
 /// HOME ROUTES ///
 
-// GET home page.
+// // GET home page.
+// router.get('/', home_controller.index);
+
+// // GET home page.
 router.get('/', home_controller.index);
 // GET fag page
 router.get('/faq', home_controller.faq);
@@ -31,5 +36,12 @@ router.post('/sign_in', user_controller.sign_in);
 router.post('/sign_in_fb', user_controller.sign_in_fb);
 // POST sign_in_gg
 router.post('/sign_in_gg', user_controller.sign_in_gg);
+
+
+/// COMIC ROUTES ///
+
+// // GET view comic page.
+// router.get('/comic_detail/:idComic',comic_controller.viewComic);
+
 
 module.exports = router;

@@ -125,8 +125,7 @@ exports.sign_in = function (req, res, next) {
         })
         return;
     }
-
-    console.log("input", req.body.username, req.body.password);
+    
     //sign in with passport
     passport.authenticate('local', function (err, user, info) {
         if (err) {

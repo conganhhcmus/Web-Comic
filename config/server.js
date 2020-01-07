@@ -4,9 +4,6 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const session = require('express-session');
 const PORT = process.env.PORT || 3000;
-// const LocalStrategy = require('passport-local').Strategy;
-// const firebaseConfig = require('./firebaseConfig');
-// const firebaseAdmin = require('./firebaseAdmin');
 
 const {
     join
@@ -43,10 +40,16 @@ app.use(passport.session());
 require('./../config/passport') (passport);
 
 // import Routers
+const indexRouter = require(__dirname + "/../src/routers/index.R");
+const readRouter = require(__dirname + "/../src/routers/read.R");
+const accountRouter = require(__dirname + "/../src/routers/account.R");
 const catalogRouter = require(__dirname + "/../src/routers/catalog.R"); //Import routes for "catalog" area of site
 
 // use Routers
-app.use('/', catalogRouter); // Add catalog routes to middleware chain.
+app.use('/',indexRouter)
+app.use('/home', catalogRouter);
+app.use('/comic_detail',readRouter);
+app.use('/account',accountRouter)
 
 // middleware
 require('./../src/middleware/errors')(app);

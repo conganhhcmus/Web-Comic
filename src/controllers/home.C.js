@@ -1,35 +1,20 @@
 // import firebase
 const firebase = require('./../../config/firebaseConfig');
+const express = require('express');
+const firebaseM = require("../models/comic.M");
 
 // import models
 const account = require('./../models/account.M');
 
-exports.index = function (req, res) {
+
+exports.index = async function (req, res) {
     const user = req.user;
+    let comic = await firebaseM.get10NewComic();
     res.render("pages/home", {
         layout: 'index',
         // some variables
-        user: user,
-        card: [{
-                name: 'Võ luyện đỉnh phong'
-            },
-            {
-                name: 'Toàn chức cao thủ'
-            },
-            {
-                name: 'Siêu năng lập phương'
-            },
-            {
-                name: 'Tôi thăng cấp một mình'
-            },
-            {
-                name: 'Thả vu nữ đó ra'
-            },
-            {
-                name: 'Từ hôm nay ta làm thành chủ'
-            }
-        ]
-
+        newComicL: comic,
+        user: user
     })
 };
 
@@ -47,7 +32,6 @@ exports.sign_in = function (req, res) {
 
 exports.sign_up = function (req, res) {
     const user = req.user;
-
     if (user) {
         res.redirect("/");
         return;

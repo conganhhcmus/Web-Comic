@@ -1,7 +1,7 @@
 var LocalStrategy = require('passport-local').Strategy;
 var passport = require('passport');
 const firebaseConfig = require('./firebaseConfig');
-const firebaseAdmin = require('./firebaseAdmin');
+// const firebaseAdmin = require('./firebaseAdmin');
 
 passport.serializeUser((user, done) => {
     done(null, user);

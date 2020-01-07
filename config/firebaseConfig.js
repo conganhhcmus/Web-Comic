@@ -1,14 +1,14 @@
 const firebase = require('firebase');
 const firebaseConfig = {
-    apiKey: "AIzaSyCt1RVAK0banmFa6i6W9ATPcba73zUPxvM",
-    authDomain: "comic-fc783.firebaseapp.com",
-    databaseURL: "https://comic-fc783.firebaseio.com",
-    projectId: "comic-fc783",
-    storageBucket: "comic-fc783.appspot.com",
-    messagingSenderId: "34229745174",
-    appId: "1:34229745174:web:2eec1547d559ba23602737",
-    measurementId: "G-L9YTCXM9JC"
-};
+    apiKey: "AIzaSyDTd79OWW0fa2s1FS0IN2OKIFhsWS8Y0kM",
+    authDomain: "comic-web-bc8e5.firebaseapp.com",
+    databaseURL: "https://comic-web-bc8e5.firebaseio.com",
+    projectId: "comic-web-bc8e5",
+    storageBucket: "comic-web-bc8e5.appspot.com",
+    messagingSenderId: "208480679391",
+    appId: "1:208480679391:web:b1e96d6007b978aead006a",
+    measurementId: "G-CHC9SF4WKE"
+  };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
