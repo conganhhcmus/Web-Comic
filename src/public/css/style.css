@@ -6255,3 +6255,32 @@ section.wn_contact_area {
   padding-bottom: 60px;
 }
 }
+.product__info__main .box-tocart {
+  margin: 0;
+  margin-bottom:25px;}
+  .product__info__main .box-tocart span {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 40px;
+    margin: 0 10px 0 0;
+    text-transform: capitalize; }
+  .product__info__main .box-tocart .input-text {
+    border: 1px solid #ebebeb;
+    color: #616161;
+    font-size: 14px;
+    height: 40px;
+    text-align: center;
+    width: 100px;
+    margin: 0 15px 15px 0; }
+.product__info__main .box-tocart .addtocart__actions .tocart {
+  background: #e59285 none repeat scroll 0 0;
+  border: 0 none;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 25px;
+  text-transform: uppercase;
+}

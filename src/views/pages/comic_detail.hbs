@@ -20,11 +20,11 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="bradcaump__inner text-center">
-						<h2 class="bradcaump-title">Shop Single</h2>
+						<h2 class="bradcaump-title">Comic Detail</h2>
 						<nav class="bradcaump-content">
-							<a class="breadcrumb_item" href="index.html">Home</a>
+							<a class="breadcrumb_item" href="/home">Home</a>
 							<span class="brd-separetor">/</span>
-							<span class="breadcrumb_item active">Shop Single</span>
+							<span class="breadcrumb_item active">{{comicDetail.name}}</span>
 						</nav>
 					</div>
 				</div>
@@ -42,14 +42,14 @@
 							<div class="col-lg-6 col-12">
 								<div class="wn__fotorama__wrapper">
 									<div class="fotorama wn__fotorama__action" data-nav="thumbs">
-										<img src="{{comicDetail.posterURL}}" alt="">
-										<img src="{{comicDetail.posterURL}}" alt="">
-										<img src="{{comicDetail.posterURL}}" alt="">
-										<img src="{{comicDetail.posterURL}}" alt="">
-										<img src="{{comicDetail.posterURL}}" alt="">
-										<img src="{{comicDetail.posterURL}}" alt="">
-										<img src="{{comicDetail.posterURL}}" alt="">
-										<img src="{{comicDetail.posterURL}}" alt="">
+										<img src="{{comicDetail.posterPath}}" alt="">
+										<img src="{{comicDetail.posterPath}}" alt="">
+										<img src="{{comicDetail.posterPath}}" alt="">
+										<img src="{{comicDetail.posterPath}}" alt="">
+										<img src="{{comicDetail.posterPath}}" alt="">
+										<img src="{{comicDetail.posterPath}}" alt="">
+										<img src="{{comicDetail.posterPath}}" alt="">
+										<img src="{{comicDetail.posterPath}}" alt="">
 									</div>
 								</div>
 							</div>
@@ -58,25 +58,29 @@
 									<h1>{{comicDetail.name}}</h1>
 									<div class="product-reviews-summary d-flex">
 										<ul class="rating-summary d-flex">
+											<li><i class="zmdi zmdi-star"></i></li>
+											<li><i class="zmdi zmdi-star"></i></li>
+											<li><i class="zmdi zmdi-star"></i></li>
+											<li><i class="zmdi zmdi-star"></i></li>
 											<li><i class="zmdi zmdi-star-outline"></i></li>
-											<li><i class="zmdi zmdi-star-outline"></i></li>
-											<li><i class="zmdi zmdi-star-outline"></i></li>
-											<li class="off"><i class="zmdi zmdi-star-outline"></i></li>
-											<li class="off"><i class="zmdi zmdi-star-outline"></i></li>
 										</ul>
 									</div>
 									<div class="price-box">
 										<span>Total chap: {{comicDetail.totalChap}}</span>
 									</div>
 									<div class="product__overview">
-										<p>{{comicDetail.description}}</p>
+										<p>{{comicDetail.descriptionShort}}</p>
+										<ul>
+											<li>• Tác giả: {{comicDetail.author}}.</li>
+											<li>• Lượt xem: {{comicDetail.numberView}}. </li>
+										</ul>
 									</div>
 									<div class="box-tocart d-flex">
-										<span>Chapter</span>
+										<span>Chapter:</span>
 										<input id="qty" class="input-text qty" name="qty" min="1" value="1" title="Qty"
 											type="number">
 										<div class="addtocart__actions">
-											<button class="tocart" type="submit" title="Add to Cart">Read</button>
+											<button class="tocart" type="submit" title="Add to Cart">︵Read︵</button>
 										</div>
 										<div class="product-addto-links clearfix">
 											<a class="wishlist" href="#"></a>
@@ -123,130 +127,71 @@
 						<div class="pro_details_nav nav justify-content-start" role="tablist">
 							<a class="nav-item nav-link active" data-toggle="tab" href="#nav-details"
 								role="tab">Details</a>
-							<a class="nav-item nav-link" data-toggle="tab" href="#nav-review" role="tab">Reviews</a>
+							<a class="nav-item nav-link" data-toggle="tab" href="#nav-review" role="tab">COMMENTS</a>
 						</div>
 						<div class="tab__container">
 							<!-- Start Single Tab Content -->
 							<div class="pro__tab_label tab-pane fade show active" id="nav-details" role="tabpanel">
 								<div class="description__attribute">
-									<p>Ideal for cold-weather training or work outdoors, the Chaz Hoodie promises
-										superior warmth with every wear. Thick material blocks out the wind as ribbed
-										cuffs and bottom band seal in body heat.Ideal for cold-weather training or work
-										outdoors, the Chaz Hoodie promises superior warmth with every wear. Thick
-										material blocks out the wind as ribbed cuffs and bottom band seal in body
-										heat.Ideal for cold-weather training or work outdoors, the Chaz Hoodie promises
-										superior warmth with every wear. Thick material blocks out the wind as ribbed
-										cuffs and bottom band seal in body heat.Ideal for cold-weather training or work
-										outdoors, the Chaz Hoodie promises superior warmth with every wear. Thick
-										material blocks out the wind as ribbed cuffs and bottom band seal in body heat.
-									</p>
-									<ul>
-										<li>• Two-tone gray heather hoodie.</li>
-										<li>• Drawstring-adjustable hood. </li>
-										<li>• Machine wash/dry.</li>
-									</ul>
+									<p>{{comicDetail.description}}</p>
 								</div>
 							</div>
 							<!-- End Single Tab Content -->
 							<!-- Start Single Tab Content -->
 							<div class="pro__tab_label tab-pane fade" id="nav-review" role="tabpanel">
-								<div class="review__attribute">
-									<h1>Customer Reviews</h1>
-									<h2>Hastech</h2>
-									<div class="review__ratings__type d-flex">
-										<div class="review-ratings">
-											<div class="rating-summary d-flex">
-												<span>Quality</span>
-												<ul class="rating d-flex">
-													<li><i class="zmdi zmdi-star"></i></li>
-													<li><i class="zmdi zmdi-star"></i></li>
-													<li><i class="zmdi zmdi-star"></i></li>
-													<li class="off"><i class="zmdi zmdi-star"></i></li>
-													<li class="off"><i class="zmdi zmdi-star"></i></li>
-												</ul>
-											</div>
-
-											<div class="rating-summary d-flex">
-												<span>Price</span>
-												<ul class="rating d-flex">
-													<li><i class="zmdi zmdi-star"></i></li>
-													<li><i class="zmdi zmdi-star"></i></li>
-													<li><i class="zmdi zmdi-star"></i></li>
-													<li class="off"><i class="zmdi zmdi-star"></i></li>
-													<li class="off"><i class="zmdi zmdi-star"></i></li>
-												</ul>
-											</div>
-											<div class="rating-summary d-flex">
-												<span>value</span>
-												<ul class="rating d-flex">
-													<li><i class="zmdi zmdi-star"></i></li>
-													<li><i class="zmdi zmdi-star"></i></li>
-													<li><i class="zmdi zmdi-star"></i></li>
-													<li class="off"><i class="zmdi zmdi-star"></i></li>
-													<li class="off"><i class="zmdi zmdi-star"></i></li>
-												</ul>
-											</div>
-										</div>
-										<div class="review-content">
-											<p>Hastech</p>
-											<p>Review by Hastech</p>
-											<p>Posted on 11/6/2018</p>
-										</div>
+								<div class="blog-details content">
+									<div class="comments_area">
+										<h3 class="comment__title">1 comment</h3>
+										<ul class="comment__list">
+											<li>
+												<div class="wn__comment">
+													<div class="thumb">
+														<img src="/images/blog/comment/1.jpeg" alt="comment images">
+													</div>
+													<div class="content">
+														<div class="comnt__author d-block d-sm-flex">
+															<span><a href="#">admin</a> Post author</span>
+															<span>October 6, 2014 at 9:26 am</span>
+															<div class="reply__btn">
+																<a href="#">Reply</a>
+															</div>
+														</div>
+														<p>Sed interdum at justo in efficitur. Vivamus gravida volutpat
+															sodales. Fusce ornare sit</p>
+													</div>
+												</div>
+											</li>
+											<li class="comment_reply">
+												<div class="wn__comment">
+													<div class="thumb">
+														<img src="/images/blog/comment/1.jpeg" alt="comment images">
+													</div>
+													<div class="content">
+														<div class="comnt__author d-block d-sm-flex">
+															<span><a href="#">admin</a> Post author</span>
+															<span>October 6, 2014 at 9:26 am</span>
+															<div class="reply__btn">
+																<a href="#">Reply</a>
+															</div>
+														</div>
+														<p>Sed interdum at justo in efficitur. Vivamus gravida volutpat
+															sodales. Fusce ornare sit</p>
+													</div>
+												</div>
+											</li>
+										</ul>
 									</div>
-								</div>
-								<div class="review-fieldset">
-									<h2>You're reviewing:</h2>
-									<h3>Chaz Kangeroo Hoodie</h3>
-									<div class="review-field-ratings">
-										<div class="product-review-table">
-											<div class="review-field-rating d-flex">
-												<span>Quality</span>
-												<ul class="rating d-flex">
-													<li class="off"><i class="zmdi zmdi-star"></i></li>
-													<li class="off"><i class="zmdi zmdi-star"></i></li>
-													<li class="off"><i class="zmdi zmdi-star"></i></li>
-													<li class="off"><i class="zmdi zmdi-star"></i></li>
-													<li class="off"><i class="zmdi zmdi-star"></i></li>
-												</ul>
+									<div class="comment_respond">
+										<h3 class="reply_title" >Leave a Reply <small><a href="#">Cancel
+													reply</a></small></h3>
+										<form class="comment__form" action="#">
+											<div class="input__box">
+												<textarea name="comment" placeholder="Your comment here"></textarea>
 											</div>
-											<div class="review-field-rating d-flex">
-												<span>Price</span>
-												<ul class="rating d-flex">
-													<li class="off"><i class="zmdi zmdi-star"></i></li>
-													<li class="off"><i class="zmdi zmdi-star"></i></li>
-													<li class="off"><i class="zmdi zmdi-star"></i></li>
-													<li class="off"><i class="zmdi zmdi-star"></i></li>
-													<li class="off"><i class="zmdi zmdi-star"></i></li>
-												</ul>
+											<div class="submite__btn">
+												<a href="">Post Comment</a>
 											</div>
-											<div class="review-field-rating d-flex">
-												<span>Value</span>
-												<ul class="rating d-flex">
-													<li class="off"><i class="zmdi zmdi-star"></i></li>
-													<li class="off"><i class="zmdi zmdi-star"></i></li>
-													<li class="off"><i class="zmdi zmdi-star"></i></li>
-													<li class="off"><i class="zmdi zmdi-star"></i></li>
-													<li class="off"><i class="zmdi zmdi-star"></i></li>
-												</ul>
-											</div>
-										</div>
-									</div>
-									<div class="review_form_field">
-										<div class="input__box">
-											<span>Nickname</span>
-											<input id="nickname_field" type="text" name="nickname">
-										</div>
-										<div class="input__box">
-											<span>Summary</span>
-											<input id="summery_field" type="text" name="summery">
-										</div>
-										<div class="input__box">
-											<span>Review</span>
-											<textarea name="review"></textarea>
-										</div>
-										<div class="review-form-actions">
-											<button>Submit Review</button>
-										</div>
+										</form>
 									</div>
 								</div>
 							</div>

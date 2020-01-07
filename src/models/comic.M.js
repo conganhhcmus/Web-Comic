@@ -21,7 +21,15 @@ module.exports = {
                     console.log('No such document!');
                 } else {
                     comic = doc.data()
-                    comic.posterURL = `https://firebasestorage.googleapis.com/v0/b/comic-web-bc8e5.appspot.com/o/${comic.posterPath}`
+                    let arrtmp = comic.description.split(". ")
+                    comic.descriptionShort = "";
+                    for (var strI = 0; strI < arrtmp.length; strI++){
+                        if(strI === 4){
+                            comic.descriptionShort += ". .";
+                            break;
+                        }
+                        comic.descriptionShort += arrtmp[strI] + ". ";
+                    }
                 }
             })
             .catch(err => {
@@ -34,9 +42,7 @@ module.exports = {
         let allCities = await db.collection('Comic').orderBy('id').limit(10).get()
         .then(snapshot => {
             snapshot.forEach(doc => {
-                let comic = doc.data()
-                comic.posterURL = `https://firebasestorage.googleapis.com/v0/b/comic-web-bc8e5.appspot.com/o/${comic.posterPath}`
-                listNewComic.push(comic)
+                listNewComic.push(doc.data())
             });
         })
         .catch(err => {
