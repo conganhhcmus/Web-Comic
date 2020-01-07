@@ -2,6 +2,7 @@
 var admin = require("firebase-admin");
 
 var serviceAccount = require("./serviceAccountKey.json");
+// console.log(admin.credential.cert(serviceAccount))
 
 var app = admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
@@ -53,4 +54,15 @@ module.exports = {
         // })
         return listNewComic
     },
+    addComic: async (comic) =>{
+        let idComic
+        let task = db.collection('Comic').add(comic).then(ref => {
+            idComic = ref.id
+            db.collection('Comic').doc(ref.id).update({id : ref.id})
+            console.log('Added document with ID: ', ref.id);
+        });
+        task.finally( () =>{
+            console.log(2)
+        })
+    }
 }
