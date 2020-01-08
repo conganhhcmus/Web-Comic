@@ -43,13 +43,15 @@ require('./../config/passport') (passport);
 const indexRouter = require(__dirname + "/../src/routers/index.R");
 const readRouter = require(__dirname + "/../src/routers/read.R");
 const adminRouter = require(__dirname + "/../src/routers/admin.R");
+const searchRouter = require(__dirname + "/../src/routers/search.R");
 const catalogRouter = require(__dirname + "/../src/routers/catalog.R"); //Import routes for "catalog" area of site
 
 // use Routers
 app.use('/',indexRouter)
 app.use('/home', catalogRouter);
-app.use('/comic_detail',readRouter);
-app.use('/admin',adminRouter)
+app.use('/comic',readRouter);
+app.use('/admin',adminRouter);
+app.use('/search',searchRouter);
 
 // middleware
 require('./../src/middleware/errors')(app);

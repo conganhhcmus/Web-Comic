@@ -125,10 +125,10 @@
                                                 <span><a href="#">My Wishlist</a></span>
                                                 {{#if user}}
                                                 <!-- Check admin đoạn này nhé . đổi lại điều kieenjn là đc-->
-                                                    {{#if user}}
-                                                    <span><a href="/admin">Manage</a></span>
-                                                    <span><a href="/admin/new_comic">New comic</a></span>
-                                                    {{/if}}
+                                                {{#if user}}
+                                                <span><a href="/admin">Manage</a></span>
+                                                <span><a href="/admin/new_comic">New comic</a></span>
+                                                {{/if}}
                                                 <span><a href="/home/sign_out">Sign out</a></span>
                                                 {{else}}
                                                 <span><a href="/home/sign_in">Sign in</a></span>
@@ -194,11 +194,11 @@
 <!-- /Header -->
 <!-- Start Search Popup -->
 <div class="box-search-content search_active block-bg close__top">
-    <form id="search_mini_form" class="minisearch" action="#">
+    <form id="search_mini_form" class="minisearch" action="/search/comic" method="GET">
         <div class="field__search">
-            <input type="text" placeholder="Search entire store here...">
+            <input type="text" placeholder="Search entire store here..." name="search_text">
             <div class="action">
-                <a href="#"><i class="zmdi zmdi-search"></i></a>
+                <input type="submit" class="zmdi zmdi-search" value="Go">
             </div>
         </div>
     </form>

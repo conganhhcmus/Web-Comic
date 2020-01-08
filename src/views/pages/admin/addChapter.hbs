@@ -23,14 +23,14 @@
             <div class="modal-body">
                 <div class="modal-product">
                     <!-- Start product /images -->
-                    <div class="product-/images">
-                        <div class="main-image /images">
-                            <img alt="big /images" src="/images/product/big-img/1.jpg">
+                    <div class="product-images">
+                        <div class="main-image images">
+                            <img alt="big images" src="{{comic.posterPath}}">
                         </div>
                     </div>
                     <!-- end product /images -->
                     <div class="product-info">
-                        <h1>Comic Name <a href=""> &#128393;</a> </h1>
+                        <h1>{{comic.name}}<a href="/admin/{{comic.id}}/edit_comic"> &#128393;</a> </h1>
                         <div class="rating__and__review">
                             <ul class="rating">
                                 <li><span class="ti-star"></span></li>
@@ -40,22 +40,22 @@
                                 <li><span class="ti-star"></span></li>
                             </ul>
                             <div class="review">
-                                <a>12 chapter</a>
+                                <a>{{comic.totalChap}} chapter</a>
                             </div>
                         </div>
                         <div class="price-box-3">
                             <div class="s-price-box">
-                                <span class="new-price">17.201 views</span>
+                                <span class="new-price">{{comic.numberView}} views</span>
                             </div>
                         </div>
                         <div class="quick-desc">
-                            mô tả gồm 2 đến 3 câu
+                            {{comic.descriptionShort}}
                         </div>
                         <div class="select__color">
-                            <h2>Author ----</h2>
+                            <h2>{{comic.author}}</h2>
                         </div>
                         <div class="select__size">
-                            <h2>Time upload 01/01/2020 </h2>
+                            <h2>{{comic.timeFomart}}</h2>
                         </div>
                         <div class="social-sharing">
                             <div class="widget widget_socialsharing_widget">
@@ -73,15 +73,9 @@
                             </div>
                         </div>
                         <div class="quick-desc">
-                            <form action="">
+                            <form action="/admin/{{comic.id}}/add_chapter" method="POST">
                                 <div class="input_box">
                                     <input type="file" name="addChapter">
-
-                                    {{!-- <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="customFile"
-                                            name="chapterNewImg">
-                                        <label class="custom-file-label" for="customFile"> Choose file</label>
-                                    </div> --}}
                                 </div>
                                 <div class="product__info__main">
                                     <input id="chapIndex" class="input-text" name="chapIndex" min="1" value="1" title="ChapIndex"

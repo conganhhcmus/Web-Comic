@@ -36,16 +36,17 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                {{#each comicL }}
                                 <tr>
-                                    <td class="product-thumbnail"><img src="/images/product/sm-3/1.jpg"
+                                    <td class="product-thumbnail"><img src="{{posterPath}}"
                                             alt="product img"></td>
-                                    <td class="product-name"><a>One Punch Maádasdadadajhdkajhdakjhsdn
-                                            Maádasdadadajhdkajhda</a></td>
-                                    <td class="product-price"><span class="amount">0</span></td>
-                                    <th class="product-price"><span class="amount">0</span></th>
-                                    <th class="product-price"><span class="amount">01/01/2020</span></th>
+                                    <td class="product-name"><a href="/admin/{{id}}/add_chapter">{{name}}</a></td>
+                                    <td class="product-price"><span class="amount">{{totalChap}}</span></td>
+                                    <th class="product-price"><span class="amount">{{numberView}} </span></th>
+                                    <th class="product-price"><span class="amount">{{time}}</span></th>
                                     <td class="product-remove"><a href="#">X</a></td>
                                 </tr>
+                                {{/each}}
                             </tbody>
                         </table>
                     </div>

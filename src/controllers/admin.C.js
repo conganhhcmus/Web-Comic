@@ -2,6 +2,7 @@ const express = require('express');
 var request = require("request");
 const firebaseM = require("../models/comic.M");
 const { Storage } = require('@google-cloud/storage');
+const util = require("../utils/utils");
 const Multer = require('multer');
 
 const storage = new Storage({
@@ -61,23 +62,36 @@ exports.newComic = async function (req, res) {
 
 exports.listChapter = async function(req,res){
     const user = req.user;
+    let comicL = await firebaseM.get1000NewComic()
     res.render("pages/admin/ListComic",{
         layout: 'index',
         user: user,
+        comicL: comicL,
     })
 }
 exports.addChapter = async function(req,res){
     const user = req.user;
+    const id = req.params.id;
+    const comic = await firebaseM.getComicByID(id)
+    comic.timeFomart = await util.timeIntToTimeString(comic.time);
     res.render("pages/admin/addChapter",{
         layout: 'index',
         user: user,
+        comic:comic,
     })
 }
 exports.addChapterP = async function(req,res){
     const user = req.user;
+    const id = req.params.id;
+    const files = req.files;
+    //xu ly luu ảnh và link
+
+    const comic = await firebaseM.getComicByID(id)
+    comic.timeFomart = await util.timeIntToTimeString(comic.time);
     res.render("pages/admin/addChapter",{
         layout: 'index',
         user: user,
+        comic:comic,
     })
 }
 exports.editChapter = async function(req,res){
