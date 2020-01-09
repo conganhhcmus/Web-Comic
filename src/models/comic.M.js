@@ -1,7 +1,6 @@
 var admin = require('./../../config/firebaseAdmin');
 // ta chuyển thành require nha (giống nhau nên ta chuyển ra cho dễ quản lý)
 let db = admin.firestore();
-
 module.exports = {
     getComicByID: async (id) => {
         let comic
@@ -100,5 +99,22 @@ module.exports = {
             db.collection('Comic').doc(ref.id).update({ id: ref.id })
             console.log('Added document with ID: ', ref.id);
         });
-    }
+    },
+    getChapterByID: async(id)=>{
+        let chapter
+        let cityRef = db.collection('ComicChapter').doc(id);
+        let getDoc = await cityRef.get()
+            .then(doc => {
+                if (!doc.exists) {
+                    console.log('No such document!');
+                } else {
+                    chapter = doc.data()
+                }
+            })
+            .catch(err => {
+                console.log('Error getting document', err);
+            });
+            console.log(chapter);
+        return chapter
+    },
 }

@@ -76,15 +76,21 @@
 										</ul>
 									</div>
 									<div class="box-tocart d-flex">
-										<span>Chapter:</span>
-										<input id="qty" class="input-text qty" name="qty" min="1" value="1" title="Qty"
-											type="number">
 										<div class="addtocart__actions">
-											<button class="tocart" type="submit" title="Add to Cart">︵Read︵</button>
+											<form method="GET" action="/comic_detail/{{comicDetail.id}}/read">
+												<span>Chapter</span>
+												<input id="this" class="input-text qty" name="this" min="1"
+													value="1" type="number">
+												<span class="addtocart__actions">
+													<button class="tocart" type="submit"
+														title="Add to Cart">︵Read︵</button>
+												</span>
+											</form>
+			
 										</div>
 										<div class="product-addto-links clearfix">
 											<a class="wishlist" href="#"></a>
-											<a class="compare" href="#"></a>
+											{{!-- <a class="compare" href="#"></a> --}}
 										</div>
 									</div>
 									<div class="product_meta">

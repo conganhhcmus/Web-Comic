@@ -49,13 +49,18 @@ const catalogRouter = require(__dirname + "/../src/routers/catalog.R"); //Import
 // use Routers
 app.use('/',indexRouter)
 app.use('/home', catalogRouter);
+
 app.use('/comic',readRouter);
 app.use('/admin',adminRouter);
 app.use('/search',searchRouter);
 
+// app.use('/home', catalogRouter); // Add catalog routes to middleware chain.
+// app.use('/login',catalogRouter);
+app.use('/comic_detail',readRouter); // warming!
+//app.use('/read',readRouter);
+
 // middleware
 require('./../src/middleware/errors')(app);
-
 
 // show info server
 const server = app.listen(PORT, function () {

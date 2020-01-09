@@ -2,7 +2,6 @@ const express = require('express');
 const firebaseM = require("../models/comic.M");
 
 
-
 exports.viewComic = async function (req, res) {
     const user = req.user
     //const id = req.query.id
@@ -16,7 +15,7 @@ exports.viewComic = async function (req, res) {
         relatedComicL: relatedComicL,
     })
 }
-exports.searchFulltext = async function(req,res){
+exports.searchFulltext = async function (req, res) {
     const user = req.user
     let queryTmp = req.query.search_text;
     let listResult = await firebaseM.searchByText(queryTmp);
@@ -27,3 +26,32 @@ exports.searchFulltext = async function(req,res){
     })
 }
 
+exports.readComic = async function (req, res) {
+    const idComic = req.params.idComic;
+    let chap = parseInt(req.query.this);
+    if (!chap) {
+        chap = req.query.select;
+        if (!chap) {
+            chap = 1;
+        }
+    }
+    currentChap = chap;
+    //_ReadComic(idComic,chap);
+    const comic = await firebaseM.getComicByID(idComic);
+    const chapter = comic.chapter[chap - 1];
+    let Chapters = await firebaseM.getChapterByID(chapter);
+    //console.log(chapters);
+    let numberChap = [];
+    let i = 1;
+
+    for (i; i <= comic.totalChap; i++) {
+
+        if (i == chap) {
+            numberChap.push({ value: i, isSelect: true });
+        }
+        else {
+            numberChap.push({ value: i });
+        }
+    }
+    res.render('pages/comic/readcomic', { layout: 'index', data: Chapters, chap: numberChap, idComic: idComic, currentChap: chap })
+}
