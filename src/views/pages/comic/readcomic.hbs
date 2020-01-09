@@ -1,109 +1,111 @@
-<!-- Start Slider area -->
-<div class="slider-area brown__nav slider--15 slide__activation slide__arrow01 owl-carousel owl-theme">
-    <!-- Start Single Slide -->
-    <div class="slide animation__style10 bg-image--1 fullscreen align__center--left">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="slider__content">
-                        <div class="contentbox">
-                            <h2>Buy <span>your </span></h2>
-                            <h2>favourite <span>Book </span></h2>
-                            <h2>from <span>Here </span></h2>
-                            <a class="shopbtn" href="#">read now</a>
+<div id="readcomic" onscroll="javascript:myFunction();">
+    <!-- Start Slider area -->
+    <div class="slider-area brown__nav slider--15 slide__activation slide__arrow01 owl-carousel owl-theme">
+        <!-- Start Single Slide -->
+        <div class="slide animation__style10 bg-image--1 fullscreen align__center--left">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="slider__content">
+                            <div class="contentbox">
+                                <h2>Buy <span>your </span></h2>
+                                <h2>favourite <span>Book </span></h2>
+                                <h2>from <span>Here </span></h2>
+                                <a class="shopbtn" href="#">read now</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- End Single Slide -->
-    <!-- Start Single Slide -->
-    <div class="slide animation__style10 bg-image--7 fullscreen align__center--left">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="slider__content">
-                        <div class="contentbox">
-                            <h2>Buy <span>your </span></h2>
-                            <h2>favourite <span>Book </span></h2>
-                            <h2>from <span>Here </span></h2>
-                            <a class="shopbtn" href="#">shop now</a>
+        <!-- End Single Slide -->
+        <!-- Start Single Slide -->
+        <div class="slide animation__style10 bg-image--7 fullscreen align__center--left">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="slider__content">
+                            <div class="contentbox">
+                                <h2>Buy <span>your </span></h2>
+                                <h2>favourite <span>Book </span></h2>
+                                <h2>from <span>Here </span></h2>
+                                <a class="shopbtn" href="#">shop now</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- End Single Slide -->
     </div>
-    <!-- End Single Slide -->
+    <!-- End Slider area -->
+    {{!-- ADD CONTROLLER CHAPTER --}}
+
+
+    <form action="/comic_detail/{{idComic}}/read" method="GET" id="formselect">
+        {{!-- <input hidden name="select" value="{{curentChap-1}}" type="number"> --}}
+        <div id="chap">
+            <ul class="pagination modal-4">
+                <li><a href="javascript:submitPrevForm();" class="prev">
+                        <i class="fa fa-chevron-left"></i>
+                        Previous
+                    </a>
+                </li>
+                <li>
+
+                    <a class="select">
+                        <select class="select" onchange="$('form').submit();" name="select" id="select">
+                            {{!-- <option selected>chap {{currentChap}}</option> --}}
+                            <hr>
+                            {{#each chap}}
+                            {{#if this.isSelect }}
+                            <option value="{{this.value}}" selected> chap {{this.value}} </option>
+                            {{else}} <option value="{{this.value}}"> chap {{this.value}} </option>
+                            {{/if}}
+                            {{/each}}
+                        </select>
+                    </a>
+
+                </li>
+                <li><a href="javascript:submitNextForm();" class="next"> Next <i class="fa fa-chevron-right"></i></a>
+                </li>
+            </ul>
+        </div>
+    </form>
+
+
+    {{#each data.image}}
+    <div>
+        <img src={{this}} style="width: 60%;"><br>
+    </div>
+    {{/each}}
 </div>
-<!-- End Slider area -->
-{{!-- ADD CONTROLLER CHAPTER --}}
 
 
-<form action="/comic_detail/{{idComic}}/read" method="GET" id="formselect">
-    {{!-- <input hidden name="select" value="{{curentChap-1}}" type="number"> --}}
-    <div id="chap">
-        <ul class="pagination modal-4">
-            <li><a href="javascript:submitPrevForm();" class="prev">
-                    <i class="fa fa-chevron-left"></i>
-                    Previous
-                </a>
-            </li>
-            <li>
+{{!-- FUNCTION KEYHIT --}}
+<script>
+    var Left;
+    var Right;
 
-                <a class="select">
-                    <select class="select" onchange="$('form').submit();" name="select" id="select">
-                        {{!-- <option selected>chap {{currentChap}}</option> --}}
-                        <hr>
-                        {{#each chap}}
-                        {{#if this.isSelect }}
-                        <option value="{{this.value}}" selected> chap {{this.value}} </option>
-                        {{else}} <option value="{{this.value}}"> chap {{this.value}} </option>
-                        {{/if}}
-                        {{/each}}
-                    </select>
-                </a>
+    document.addEventListener("keydown", function (e) {
+        Left = false;
+        Right = false;
 
-            </li>
-            <li><a href="javascript:submitNextForm();" class="next"> Next <i class="fa fa-chevron-right"></i></a></li>
-        </ul>
-    </div>
-</form>
+        var key = e.keyCode
+        if (key == "37") {
+            Left = true;
+        }
+        else if (key == "39") {
+            Right = true;
+        }
+    });
 
-
-{{#each data.image}}
-<div>
-    <img src={{this}} style="width: 60%;"><br>
-</div>
-{{/each}}
-
-<form action="/comic_detail/{{idComic}}/read" method="GET" id="formselect">
-    {{!-- <input hidden name="select" value="{{curentChap-1}}" type="number"> --}}
-    <div id="chap">
-        <ul class="pagination modal-4">
-            <li><a href="javascript:submitPrevForm();" class="prev">
-                    <i class="fa fa-chevron-left"></i>
-                    Previous
-                </a>
-            </li>
-            <li>
-
-                <a class="select">
-                    <select class="select" onchange="$('form').submit();" name="select" id="select">
-                        {{!-- <option selected>chap {{currentChap}}</option> --}}
-                        <hr>
-                        {{#each chap}}
-                        {{#if this.isSelect }}
-                        <option value="{{this.value}}" selected> chap {{this.value}} </option>
-                        {{else}} <option value="{{this.value}}"> chap {{this.value}} </option>
-                        {{/if}}
-                        {{/each}}
-                    </select>
-                </a>
-
-            </li>
-            <li><a href="javascript:submitNextForm();" class="next"> Next <i class="fa fa-chevron-right"></i></a></li>
-        </ul>
-    </div>
-</form>
+    document.addEventListener("keyup", function (e) {
+        if (Left) {
+            submitPrevForm();
+        }
+        else if (Right) {
+            submitNextForm();
+        }
+    });
+</script>

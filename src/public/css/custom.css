@@ -41,7 +41,7 @@
 	font-family: arial;
   }
   
-  body {
+  #readcomic {
 	background-color: #555;
 	text-align: center;
 	font-family: arial;
@@ -169,6 +169,8 @@
 	height: 50px;
 	background-color: #555;
 	/* z-index: 1000; */
+	bottom: 0px;
+	position: fixed;
 	margin-top: 0px;
   }
 
