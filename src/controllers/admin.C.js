@@ -18,6 +18,11 @@ exports.newComicP = async function (req, res) {
     let inf = null
     if(user) {
         inf = await accountM.getInf(user.uid);
+        if (!inf.admin) {
+            return res.redirect('/');
+        } 
+    } else {
+        return res.redirect('/');
     }
     const myFormReq = req.body
     file = req.files[0]
@@ -64,6 +69,11 @@ exports.newComic = async function (req, res) {
     let inf = null
     if(user) {
         inf = await accountM.getInf(user.uid);
+        if (!inf.admin) {
+            return res.redirect('/');
+        } 
+    } else {
+        return res.redirect('/');
     }
     res.render("pages/admin/newComic", {
         layout: 'index',
@@ -77,6 +87,11 @@ exports.listChapter = async function(req,res){
     let inf = null
     if(user) {
         inf = await accountM.getInf(user.uid);
+        if (!inf.admin) {
+            return res.redirect('/');
+        } 
+    } else {
+        return res.redirect('/');
     }
     let comicL = await firebaseM.get1000NewComic()
     res.render("pages/admin/ListComic",{
@@ -91,6 +106,11 @@ exports.addChapter = async function(req,res){
     let inf = null
     if(user) {
         inf = await accountM.getInf(user.uid);
+        if (!inf.admin) {
+            return res.redirect('/');
+        } 
+    } else {
+        return res.redirect('/');
     }
     const id = req.params.id;
     const comic = await firebaseM.getComicByID(id)
@@ -107,6 +127,11 @@ exports.addChapterP = async function(req,res){
     let inf = null
     if(user) {
         inf = await accountM.getInf(user.uid);
+        if (!inf.admin) {
+            return res.redirect('/');
+        } 
+    } else {
+        return res.redirect('/');
     }
     const id = req.params.id;
     const files = req.files;
@@ -126,6 +151,11 @@ exports.editChapter = async function(req,res){
     let inf = null
     if(user) {
         inf = await accountM.getInf(user.uid);
+        if (!inf.admin) {
+            return res.redirect('/');
+        } 
+    } else {
+        return res.redirect('/');
     }
     res.render("pages/admin/editComic",{
         layout: 'index',
@@ -138,6 +168,11 @@ exports.editChapterP = async function(req,res){
     let inf = null
     if(user) {
         inf = await accountM.getInf(user.uid);
+        if (!inf.admin) {
+            return res.redirect('/');
+        } 
+    } else {
+        return res.redirect('/');
     }
     res.render("pages/admin/editComic",{
         layout: 'index',
