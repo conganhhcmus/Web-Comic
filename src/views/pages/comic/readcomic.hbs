@@ -90,7 +90,6 @@
     document.addEventListener("keydown", function (e) {
         Left = false;
         Right = false;
-
         var key = e.keyCode
         if (key == "37") {
             Left = true;
@@ -101,11 +100,13 @@
     });
 
     document.addEventListener("keyup", function (e) {
-        if (Left) {
-            submitPrevForm();
+        var key = e.keyCode
+         if (key == "37" && Left) {
+            return submitPrevForm();
         }
-        else if (Right) {
-            submitNextForm();
+        else if (key == "39" && Right) {
+            return submitNextForm();
         }
+
     });
 </script>
