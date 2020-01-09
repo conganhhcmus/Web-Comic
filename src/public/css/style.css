@@ -2349,14 +2349,16 @@ nav.menu {
     .product .product__thumb a {
       display: block; }
       .product .product__thumb a img {
-        width: 100%; }
+        width: 270px;
+        height: 340px; 
+      }
       .product .product__thumb a.second__img {
         left: 0;
         opacity: 0;
         position: absolute;
         top: 0;
-		width:100%;
-		height:100%;
+		    width:100%;
+		    height:100%;
         transition-property: all;
         transition-timing-function: linear; }
         .product .product__thumb a.second__img img {

@@ -26,7 +26,8 @@ module.exports = function (passport) {
                     // success
                     const user = {
                         user: username,
-                        pass: password
+                        pass: password,
+                        uid: firebaseConfig.auth().currentUser.uid
                     }
                     return done(null, user);
                 })

@@ -2,7 +2,7 @@
 const firebase = require('./../../config/firebaseConfig');
 const passport = require('passport');
 // import models
-//const accountM = require('./../models/account.M');
+const accountM = require('./../models/account.M');
 
 exports.sign_out = function (req, res) {
     //to do something
@@ -77,6 +77,14 @@ exports.sign_up = function (req, res, next) {
                     if (err) {
                         return next(err);
                     }
+                    // save database
+                    const uid = firebase.auth().currentUser.uid;
+                    const inf = {
+                        fullname: req.body.fullname,
+                        admin: false
+                    }
+                    console.log(uid, inf);
+                    accountM.setInf(inf, uid);
                     return res.redirect('/');
                 });
             })(req, res, next);
@@ -87,7 +95,7 @@ exports.sign_up = function (req, res, next) {
                 error: "Create new account error ! Pls create again !"
                 // some variables
             })
-            
+
         });
 };
 
@@ -125,7 +133,7 @@ exports.sign_in = function (req, res, next) {
         })
         return;
     }
-    
+
     //sign in with passport
     passport.authenticate('local', function (err, user, info) {
         if (err) {

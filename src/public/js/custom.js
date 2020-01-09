@@ -50,9 +50,8 @@ function checkScrollDirectionIsUp(event) {
 function readchap() {
     var totalChap = document.getElementById("totalchap").value;
     if (totalChap != 0) {
-        alert("Chap don't have chapter ! Pls read other comic !");
         return true;
     }
+    alert("Chap don't have chapter ! Pls read other comic !");
     return false;
-
 }

@@ -4,11 +4,19 @@ const express = require('express');
 const firebaseM = require("../models/comic.M");
 
 // import models
-const account = require('./../models/account.M');
+const accountM = require('./../models/account.M');
 
 
 exports.index = async function (req, res) {
     const user = req.user;
+    // get database
+    //firebase.auth().signInWithEmailAndPassword(user.username,user.password);
+
+    let inf = null
+    if(user) {
+        inf = await accountM.getInf(user.uid);
+    }
+    //console.log(inf);
     let comic = await firebaseM.get10NewComic();
 
     // Đoạn này dữ liệu tạm. sẽ thay hàm get10new bằng các hàm tương ứng
@@ -28,6 +36,7 @@ exports.index = async function (req, res) {
         topMonthComicL: comicMonth,
         topYearComicL: comicYear,
         user: user,
+        inf: inf
     })
 };
 

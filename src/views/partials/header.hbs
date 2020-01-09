@@ -71,8 +71,8 @@
                             </div>
                         </li>
                         <li><a href="contact.html">Contact</a></li>
-                        <li class="drop with--one--item "><a href="/about">About</i></a></li>
-                        <li class="drop with--one--item"><a href="/faq">FAQ</a></li>
+                        <li class="drop with--one--item "><a href="/home/about">About</i></a></li>
+                        <li class="drop with--one--item"><a href="/home/faq">FAQ</a></li>
                     </ul>
                 </nav>
             </div>
@@ -83,6 +83,12 @@
                     <li class="setting__bar__icon"><a class="setting__active" href="#"></a>
                         <div class="searchbar__content setting__block">
                             <div class="content-inner">
+                                <div>
+                                    <strong class="label switcher-label">
+                                        <span>{{inf.fullname}}</span>
+                                    </strong>
+                                </div>
+                                <br>
                                 <div class="switcher-currency">
                                     <strong class="label switcher-label">
                                         <span>Language</span>
@@ -125,7 +131,7 @@
                                                 <span><a href="#">My Wishlist</a></span>
                                                 {{#if user}}
                                                 <!-- Check admin đoạn này nhé . đổi lại điều kieenjn là đc-->
-                                                {{#if user}}
+                                                {{#if inf.admin}}
                                                 <span><a href="/admin">Manage</a></span>
                                                 <span><a href="/admin/new_comic">New comic</a></span>
                                                 {{/if}}
