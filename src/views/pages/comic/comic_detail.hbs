@@ -67,6 +67,7 @@
 									</div>
 									<div class="price-box">
 										<span>Total chap: {{comicDetail.totalChap}}</span>
+										<input id="totalchap" type="number" value="{{comicDetail.totalChap}}" hidden>
 									</div>
 									<div class="product__overview">
 										<p>{{comicDetail.descriptionShort}}</p>
@@ -77,9 +78,9 @@
 									</div>
 									<div class="box-tocart d-flex">
 										<div class="addtocart__actions">
-											<form method="GET" action="/comic_detail/{{comicDetail.id}}/read">
+											<form method="GET" action="/comic_detail/{{comicDetail.id}}/read" onsubmit="return readchap();">
 												<span>Chapter</span>
-												<input id="this" class="input-text qty" name="this" min="1"
+												<input id="this" class="input-text qty" name="this" min="1" max="{{comicDetail.totalChap}}"
 													value="1" type="number">
 												<span class="addtocart__actions">
 													<button class="tocart" type="submit"
