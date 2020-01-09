@@ -9,9 +9,6 @@ const accountM = require('./../models/account.M');
 
 exports.index = async function (req, res) {
     const user = req.user;
-    // get database
-    //firebase.auth().signInWithEmailAndPassword(user.username,user.password);
-
     let inf = null
     if(user) {
         inf = await accountM.getInf(user.uid);
@@ -40,39 +37,61 @@ exports.index = async function (req, res) {
     })
 };
 
-exports.sign_in = function (req, res) {
+exports.sign_in = async function (req, res) {
     const user = req.user;
-    if (user) {
+    let inf = null
+    if(user) {
+        inf = await accountM.getInf(user.uid);
         res.redirect("/");
         return;
     }
     res.render("pages/sign_in", {
-        layout: 'index'
+        layout: 'index',
         // some variables
+        user: user,
+        inf: inf
     })
 };
 
-exports.sign_up = function (req, res) {
+exports.sign_up = async function (req, res) {
     const user = req.user;
-    if (user) {
+    let inf = null
+    if(user) {
+        inf = await accountM.getInf(user.uid);
         res.redirect("/");
         return;
     }
     res.render("pages/sign_up", {
         layout: 'index',
-        error: false
+        error: false,
         // some variables
+        user: user,
+        inf: inf
     })
 };
 
-exports.faq = function (req, res) {
+exports.faq = async function (req, res) {
+    const user = req.user;
+    let inf = null
+    if(user) {
+        inf = await accountM.getInf(user.uid);
+    }
     res.render("pages/faq", {
-        layout: 'index'
+        layout: 'index',
+        user: user,
+        inf: inf
     })
 };
 
-exports.about = function (req, res) {
+exports.about = async function (req, res) {
+    const user = req.user;
+    let inf = null
+    if(user) {
+        inf = await accountM.getInf(user.uid);
+    }
     res.render("pages/about", {
-        layout: 'index'
+        layout: 'index',
+        user: user,
+        inf: inf
     })
 };

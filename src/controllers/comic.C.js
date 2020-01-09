@@ -1,10 +1,15 @@
 const express = require('express');
 const firebaseM = require("../models/comic.M");
-
+const accountM = require('./../models/account.M');
 
 exports.viewComic = async function (req, res) {
-    const user = req.user
     //const id = req.query.id
+    const user = req.user;
+    let inf = null
+    if(user) {
+        inf = await accountM.getInf(user.uid);
+    }
+
     const id = req.params.idComic
     const comic = await firebaseM.getComicByID(id)
     const relatedComicL = await firebaseM.get10ComicByCategory(comic.category[0])
@@ -13,20 +18,32 @@ exports.viewComic = async function (req, res) {
         comicDetail: comic,
         user: user,
         relatedComicL: relatedComicL,
+        inf: inf
     })
 }
 exports.searchFulltext = async function (req, res) {
-    const user = req.user
+    const user = req.user;
+    let inf = null
+    if(user) {
+        inf = await accountM.getInf(user.uid);
+    }
     let queryTmp = req.query.search_text;
     let listResult = await firebaseM.searchByText(queryTmp);
     res.render("pages/comic/comic_by_list", {
         layout: 'index',
         //comicResultL: comics,
         user: user,
+        inf: inf
     })
 }
 
 exports.readComic = async function (req, res) {
+    const user = req.user;
+    let inf = null
+    if(user) {
+        inf = await accountM.getInf(user.uid);
+    }
+
     const idComic = req.params.idComic;
     let chap = parseInt(req.query.this);
     if (!chap) {
@@ -53,5 +70,13 @@ exports.readComic = async function (req, res) {
             numberChap.push({ value: i });
         }
     }
-    res.render('pages/comic/readcomic', { layout: 'index', data: Chapters, chap: numberChap, idComic: idComic, currentChap: chap })
+    res.render('pages/comic/readcomic', { 
+        layout: 'index', 
+        data: Chapters, 
+        chap: numberChap, 
+        idComic: idComic, 
+        currentChap: chap,
+        user: user,
+        inf: inf
+    })
 }

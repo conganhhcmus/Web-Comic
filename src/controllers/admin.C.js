@@ -4,7 +4,7 @@ const firebaseM = require("../models/comic.M");
 const { Storage } = require('@google-cloud/storage');
 const util = require("../utils/utils");
 const Multer = require('multer');
-
+const accountM = require('./../models/account.M');
 const storage = new Storage({
     projectId: "comic-web-bc8e5",
     keyFilename: `${__dirname}/../models/serviceAccountKey.json`
@@ -14,6 +14,11 @@ const storage = new Storage({
 const bucket = storage.bucket("comic-web-bc8e5.appspot.com");
 
 exports.newComicP = async function (req, res) {
+    const user = req.user;
+    let inf = null
+    if(user) {
+        inf = await accountM.getInf(user.uid);
+    }
     const myFormReq = req.body
     file = req.files[0]
     let Mycomic = {
@@ -49,28 +54,44 @@ exports.newComicP = async function (req, res) {
     blobStream.end(file.buffer);
     res.render("pages/admin/newComic", {
         layout: 'index',
+        user: user,
+        inf: inf
     })
 }
 
 exports.newComic = async function (req, res) {
     const user = req.user;
+    let inf = null
+    if(user) {
+        inf = await accountM.getInf(user.uid);
+    }
     res.render("pages/admin/newComic", {
         layout: 'index',
         user: user,
+        inf: inf
     })
 }
 
 exports.listChapter = async function(req,res){
     const user = req.user;
+    let inf = null
+    if(user) {
+        inf = await accountM.getInf(user.uid);
+    }
     let comicL = await firebaseM.get1000NewComic()
     res.render("pages/admin/ListComic",{
         layout: 'index',
         user: user,
         comicL: comicL,
+        inf: inf
     })
 }
 exports.addChapter = async function(req,res){
     const user = req.user;
+    let inf = null
+    if(user) {
+        inf = await accountM.getInf(user.uid);
+    }
     const id = req.params.id;
     const comic = await firebaseM.getComicByID(id)
     comic.timeFomart = await util.timeIntToTimeString(comic.time);
@@ -78,10 +99,15 @@ exports.addChapter = async function(req,res){
         layout: 'index',
         user: user,
         comic:comic,
+        inf: inf
     })
 }
 exports.addChapterP = async function(req,res){
     const user = req.user;
+    let inf = null
+    if(user) {
+        inf = await accountM.getInf(user.uid);
+    }
     const id = req.params.id;
     const files = req.files;
     //xu ly luu ảnh và link
@@ -92,19 +118,30 @@ exports.addChapterP = async function(req,res){
         layout: 'index',
         user: user,
         comic:comic,
+        inf: inf
     })
 }
 exports.editChapter = async function(req,res){
     const user = req.user;
+    let inf = null
+    if(user) {
+        inf = await accountM.getInf(user.uid);
+    }
     res.render("pages/admin/editComic",{
         layout: 'index',
         user: user,
+        inf: inf
     })
 }
 exports.editChapterP = async function(req,res){
     const user = req.user;
+    let inf = null
+    if(user) {
+        inf = await accountM.getInf(user.uid);
+    }
     res.render("pages/admin/editComic",{
         layout: 'index',
         user: user,
+        inf: inf
     })
 }
