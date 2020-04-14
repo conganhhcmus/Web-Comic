@@ -1,33 +1,72 @@
 # ComicsWeb
-## Website:
-Website phục vụ môn học Công nghệ Phần Mềm Trường KHTN
-## Hướng dẫn:
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/conganhhcmus/1)
+
+NOTE: Team decided to create an website bidding for learning needs at Ho Chi Minh University of Science school.
+
+## Team
+
+- Lê Đoàn Công Ảnh - 1712282
+- Lê Văn Anh - 1712275
+- Nguyễn Văn Bình
+- Trần Nhựt Kha
+
+## Overview
+
+### Featuring
+
+- HTML/CSS/JS - (View Browser)
+- Firebase - (Database)
+- Node.js - (Web Server)
+- Express - (Web App Server)
+- Passport - (Authentication)
+- Handlebar - (Web render)
+- Bootstrap - (Css framework)
+
+### Benefits
+
+**Front End**
+
+- UI Design - (HTML/CSS/JS)
+- Animate - (Bootstrap)
+
+**Server**
+
+- Local Authentication Strategy - (passport)
+- Universal JS - (node & express)
+- Server Database - (firebase-database)
+
+**Dev/Test**
+
+- Local build (Nodejs)
+- Device (Browser)
+- Server build (Heroku)
+
+## Guide:
+
 ### Clone: 
 
 `$git clone https://gitlab.com/conganhhcmus/comicsweb.git`
 
 ### Prepare:
 
-- Cài Nodejs
-- Cài VSCode
+- Nodejs
+- VSCode
 
 ### Build:
-- cài đặt package:
+- install package:
 
 `$npm install`
 
-- chạy server (localhost):
+- run server (localhost):
 
 `$node app.js`
 
-- thành quả:
+- result:
 
-vào brower chạy: localhost:[port]
+open browser and access link : localhost:[port]
 
-
-## Liên hệ:
-
-- gmail: conganhhcmus@gmail.com
-- phone: 0971148600
-- gmail: levananhhcmus@gmail.com
-- phone: 0372493313
+## Contact Me
+- [Facebook](https://www.facebook.com/conganhhcmus)
+- [Instagram](https://www.instagram.com/conganhhcmus)
+- [Mail](mailto:conganhhcmus@gmail.com)
+- [Youtube](https://www.youtube.com/channel/UCExh5J_fK931tesMCry6_pw?view_as=subscriber)
