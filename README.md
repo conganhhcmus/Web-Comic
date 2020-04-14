@@ -1,7 +1,7 @@
 # ComicsWeb
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/conganhhcmus/1)
 
-NOTE: Team decided to create an website bidding for learning needs at Ho Chi Minh University of Science school.
+NOTE: Team decided to create an website comic for learning needs at Ho Chi Minh University of Science school.
 
 ## Team
 
